@@ -24,7 +24,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
 #RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
 RUN openssl req -newkey rsa:2048 -new -x509 -subj "/C=US/ST=California/L=SanFrancisco/O=Dis/CN=www.selfsigned.com" -days 1024 -nodes -out /etc/ssl/certs/nginx.crt -keyout /etc/ssl/certs/nginx.key && \
-    bash -c 'cat nginx.crt nginx.key > /etc/ssl/certs/nginx.pem'
+    bash -c 'cat /etc/ssl/certs/nginx.crt /etc/ssl/certs/nginx.key > /etc/ssl/certs/nginx.pem'
 
 RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
